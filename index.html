@@ -172,7 +172,19 @@ const YEARS = [
 <script>
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-const frame = (f, alt) => `<div class="frame" data-name="${esc(f)}"><img src="assets/${esc(f)}" alt="${esc(alt)}" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('missing')"></div>`;
+const EXTS = ["jpg", "JPG", "jpeg", "JPEG", "png", "PNG", "webp"];
+function imgFallback(img) {
+  const f = img.parentNode.dataset.name;
+  const base = f.replace(/\.[^.]+$/, "");
+  const n = +(img.dataset.try || 0);
+  if (n < EXTS.length) {
+    img.dataset.try = n + 1;
+    img.src = "assets/" + base + "." + EXTS[n];
+  } else {
+    img.parentNode.classList.add("missing");
+  }
+}
+const frame = (f, alt) => `<div class="frame" data-name="${esc(f)}"><img src="assets/${esc(f)}" alt="${esc(alt)}" loading="lazy" decoding="async" onerror="imgFallback(this)"></div>`;
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 document.title = SITE.title;
