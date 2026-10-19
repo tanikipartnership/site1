@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tani Ki Partnership</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#5e1427">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💌</text></svg>">
+<style>
+:root{--ivory:#faf4ea;--paper:#fffaf1;--burg:#5e1427;--blush:#e8c9c4;--gold:#b8924a;--ink:#3a2a2a;--soft:#7a6560;
+--serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;--hand:"Segoe Script","Bradley Hand","Snell Roundhand","Brush Script MT",cursive}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--ivory);color:var(--ink);font:1.08rem/1.75 var(--serif);-webkit-font-smoothing:antialiased}
+body.locked{overflow:hidden}
+h1,h2,h3{font-weight:400;color:var(--burg);line-height:1.15;margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+
+/* opening screen */
+#intro{position:fixed;inset:0;z-index:100;display:grid;place-items:center;text-align:center;padding:24px;color:var(--ivory);
+background:radial-gradient(120% 90% at 20% 10%,#7a1f36,transparent 60%),radial-gradient(100% 80% at 85% 90%,#3f0c1a,transparent 60%),var(--burg);
+background-size:160% 160%;animation:drift 18s ease-in-out infinite alternate;transition:opacity 1.2s,transform 1.4s,visibility 0s 1.4s}
+@keyframes drift{to{background-position:100% 100%}}
+#intro.gone{opacity:0;transform:scale(1.06);visibility:hidden;pointer-events:none}
+.dust i{position:absolute;bottom:-10px;width:4px;height:4px;border-radius:50%;background:var(--gold);opacity:0;animation:rise linear infinite}
+@keyframes rise{10%{opacity:.7}to{transform:translateY(-105vh) translateX(30px);opacity:0}}
+.intro-in{position:relative;max-width:560px;border:1px solid rgba(184,146,74,.6);outline:1px solid rgba(184,146,74,.25);outline-offset:8px;padding:48px 26px}
+#intro h1{color:var(--ivory);font-size:clamp(2.6rem,11vw,4.6rem);font-style:italic}
+#intro .date{font-family:var(--hand);color:#e6c98f;font-size:1.4rem;margin:18px 0 6px}
+#intro p{margin:8px auto 30px;opacity:.88;max-width:26em}
+.btn{background:transparent;border:1px solid var(--gold);color:inherit;padding:13px 30px;border-radius:40px;letter-spacing:.04em;transition:.3s}
+#intro .btn:hover{background:var(--ivory);color:var(--burg)}
+
+/* year navigation */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;gap:4px;justify-content:center;flex-wrap:wrap;padding:10px 8px;background:rgba(250,244,234,.93);backdrop-filter:blur(8px);border-bottom:1px solid rgba(184,146,74,.35);transform:translateY(-100%);transition:transform .8s .6s}
+body.open nav{transform:none}
+nav a{text-decoration:none;color:var(--burg);font-size:.9rem;padding:4px 12px;border-radius:20px}nav a:hover{background:var(--blush)}
+
+/* timeline */
+.hero{min-height:80vh;display:grid;place-items:center;text-align:center;padding:100px 22px 20px}
+.hero h2{font-size:clamp(2.2rem,8vw,4.4rem);font-style:italic}.hero p{max-width:30em;margin:16px auto;color:var(--soft)}
+.scroll{display:block;color:var(--gold);font-size:1.4rem;animation:bob 2.4s ease-in-out infinite}@keyframes bob{50%{transform:translateY(7px)}}
+.timeline{position:relative;padding-bottom:40px}
+.timeline::before{content:"";position:absolute;left:11px;top:0;bottom:0;width:1px;background:linear-gradient(var(--gold),transparent)}
+.year{position:relative;padding:0 0 80px 38px}
+.year::before{content:"";position:absolute;left:5px;top:16px;width:13px;height:13px;border-radius:50%;background:var(--ivory);border:2px solid var(--gold)}
+.year h2{font-size:clamp(2.4rem,9vw,4rem);font-style:italic;color:var(--gold)}
+.year h3{font-size:1.5rem;font-style:italic;margin:2px 0 10px}
+.year .text{max-width:36em;color:var(--ink);margin:0 0 26px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px 14px}
+@media(min-width:760px){.grid{grid-template-columns:repeat(3,1fr);gap:28px 20px}.timeline::before{left:15px}.year{padding-left:60px}.year::before{left:9px}}
+.card{margin:0;background:#fff;padding:8px 8px 12px;box-shadow:0 6px 18px rgba(58,42,42,.16);border:0;text-align:left;transition:transform .3s;width:100%}
+.card:nth-child(3n+1){transform:rotate(-1.2deg)}.card:nth-child(3n+2){transform:rotate(1deg)}.card:hover,.card:focus-visible{transform:none}
+.frame{position:relative;aspect-ratio:4/5;background:linear-gradient(135deg,var(--blush),#f3e3d6);overflow:hidden}
+.frame img{width:100%;height:100%;object-fit:cover;display:block}
+.frame.missing img{display:none}
+.frame.missing::after{content:"Add " attr(data-name);position:absolute;inset:6px;display:grid;place-items:center;text-align:center;padding:8px;font-family:var(--hand);color:var(--burg);opacity:.7;font-size:.85rem;border:1px dashed var(--gold)}
+.cap{display:block;font-family:var(--hand);color:var(--burg);font-size:.95rem;line-height:1.45;margin-top:10px;min-height:1.4em}
+.note{font-family:var(--hand);color:var(--burg);background:var(--paper);border-left:3px solid var(--blush);padding:14px 18px;margin:26px 0 0;max-width:36em;line-height:1.8}
+
+/* lightbox */
+dialog{border:0;padding:0;background:transparent;max-width:min(94vw,760px);width:100%;color:var(--ivory);overflow:visible}
+dialog::backdrop{background:rgba(35,8,16,.93)}
+.lb{text-align:center;padding:10px}.lb .frame{aspect-ratio:auto;min-height:220px;max-height:72vh;background:#3b1220}.lb .frame img{max-height:72vh;object-fit:contain}
+.lb p{font-family:var(--hand);font-size:1.25rem;margin:14px auto 0;max-width:30em}
+.lbtn{position:fixed;top:50%;background:rgba(250,244,234,.18);color:#fff;border:0;width:46px;height:46px;border-radius:50%;font-size:1.4rem;transform:translateY(-50%)}
+.lbtn.p{left:10px}.lbtn.n{right:10px}.lbtn.x{top:16px;right:16px;transform:none}
+footer{text-align:center;padding:40px 22px 80px;color:var(--soft)}footer h2{font-style:italic;font-size:clamp(1.8rem,6vw,2.6rem);margin-bottom:10px}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity 1s,transform 1s}.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important;transition-delay:0s!important}html{scroll-behavior:auto}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body class="locked">
+
+<!-- ======================================================================
+  ★ EDIT HERE ★   This is the only part you need to change.
+  1. Change only the words between the "quote marks". Keep the quotes and commas.
+  2. Each photo is ONE line:  "photo-01.jpg | Your caption here",
+     (file name, then | , then the caption). Add as many lines as you like (5 to 10 is ideal).
+     To add a photo: copy a line and paste it below. To remove one: delete the line.
+  3. Put your photo files in a folder called "assets" next to index.html.
+     Missing photos show a dashed "Add photo-01.jpg" box, so nothing breaks.
+  4. If your text contains a double quote, write \" instead. Apostrophes (') are fine.
+  5. PRIVACY: a website like this cannot hide its content. Anyone who has the link can view
+     the page and your photos. Don't include anything you wouldn't want others to see.
+     No password is used because it would not make this secure.
+  ====================================================================== -->
+<script>
+const SITE = {
+  title: "Tani Ki Partnership",
+  displayDate: "21 October 2026",
+  introMessage: "Five years of choosing each other, again and again. Come in, and walk through it with me.",
+  openButton: "Open our story",
+  heroLine: "Five years, one partnership.",
+  heroText: "Every great partnership has its own story. Ours has laughter, madness, little disagreements, endless memories, and a kind of love that feels more like home with every passing year. And the best part? We're only getting started.",
+  footerText: "Cheers to many more years..."
+};
+
+const YEARS = [
+  { label: "2021", title: "MBA Sorted", text: "I'm so glad life brought me at SIBM — and brought me to you",
+    photos: [
+      "photo-01.jpg | Lazy Morningss",
+      "photo-02.jpg | 3 Bean Burger missing in the frame",
+      "photo-03.jpg | Cheese Chili Corn Saandwichhh",
+      "photo-04.jpg | Breakfast karne mein maza toh aata tha, tumhare saath ❤️",
+      "photo-05.jpg | Those long walks... I loved them so, so much. ❤️ ",
+      "photo-06.jpg | Anddd... it was a wrap on our campus life, but our favourite story was just getting started!"
+    ] },
+  { label: "2022", title: "Start of Long Distancee", text: "The long-distance thingy! 🥹 Being away from each other wasn't always easy. But somehow, we made it work and sailed through it. Looking back, I'm just so proud of us. ❤️",
+    photos: [
+      "photo-07.jpg | Our first trip together... ",
+      "photo-08.jpg | Puskar ki Holiii", 
+      "photo-09.jpg | I still remember this hug when you first came to Pune",
+      "photo-10.jpg | iPhone se pehli photo hi kya badiya aayi, dekhooo! 😂", 
+      "photo-11.jpg | Gonna keep irritating you till eternity... sorry, no returns, no exchanges!"
+    ] },
+  { label: "2023", title: "Year of Memories", text: "Pune <> Hyderabad <> Ahmedabad <> Gurgaon... Different cities, crazy plans, and so many memories packed into one year",
+    photos: [
+      "photo-12.jpg | A Beautiful dayy",
+      "photo-13.jpg | Lonavala ka sunrise", 
+      "photo-14.jpg | Cutuu...Angooori Rasmalai ka taste yaad aaya??",
+      "photo-15.jpg | Kya badiya golf khele😂", 
+      "photo-16.jpg | Indiaaa Indiaaa", 
+      "photo-17.jpg | Garba ka sirf pose hi kar paye😎",
+      "photo-18.jpg | Bestest Photo",
+      "photo-19.jpg | Gurgaon ki thand.. Paul's key sang"
+    ] },
+  { label: "2024", title: "Goaa", text: "Goa was something elseee! 🥹❤️ Sunsets, beach walks, endless pictures.",
+    photos: [
+      "photo-20.jpg | Mere Haath mey Tera Haath ho...",
+      "photo-21.jpg | Saari Jannatein Mere Saath Ho...  ", 
+      "photo-22.jpg | Yeh teri Chand Baliyaaa",
+      "photo-23.jpg | Casino mey toh nahi jeete, but tumko mey jeeta huu..", 
+      "photo-24.jpg | Peace and Lots of Love"
+    ] },
+  { label: "2025–26", title: "Pune to Gurgaon.. Finallyy", text: "After all those long-distance scenes and missing each other like crazy... we finally made it in same city!! 🥹❤️ And honestly, having you closer has made even the most ordinary days feel special. From random 2 AM drives to the most random adventures, from doing questionable things together 😂 to dreaming about our life after shaadi... we've packed so much into these two years. And now, when I look at us, it feels amazing that the girl who made my MBA special is going to be my partner for life.",
+    photos: [
+      "photo-25.jpg | Kuch Samaj nahi but Sun key Accha lagaa ❄️🎤", 
+      "photo-26.jpg | Prayag mey dubki laga key, saare paap resett😂", 
+      "photo-27.jpg | Happy Valentine's Day!!",
+      "photo-28.jpg | Kya 3 din the voh...", 
+      "photo-29.jpg | 2AM Bten Drivess", 
+      "photo-30.jpg | Cheating bhi karli and Party bhi karlii😂😂", 
+      "photo-31.jpg | Mata rani ney bacha liya🫣", 
+      "photo-32.jpg | 50 Days to foreverrr...", 
+      "photo-33.jpg | Reaction when it hits: Shaadi key baad Vietnam 😍"
+    ] }
+];
+</script>
+<!-- ★ END OF EDIT SECTION. Nothing below needs changing. ★ -->
+
+<div id="intro" role="dialog" aria-labelledby="introTitle">
+  <div class="dust" id="dust" aria-hidden="true"></div>
+  <div class="intro-in"><h1 id="introTitle"></h1><div class="date" id="introDate"></div><p id="introMsg"></p><button class="btn" id="openBtn"></button></div>
+</div>
+<nav aria-label="Years" id="nav"></nav>
+<main id="top" tabindex="-1">
+  <header class="hero"><div class="reveal"><h2 id="heroLine"></h2><p id="heroText"></p><span class="scroll" aria-hidden="true">⌄</span></div></header>
+  <div class="wrap"><div class="timeline" id="timeline"></div></div>
+</main>
+<footer><h2 id="fTitle"></h2><p id="footText"></p></footer>
+
+<dialog id="lb" aria-label="Photo viewer">
+  <div class="lb"><div id="lbFrame"></div><p id="lbCap"></p></div>
+  <button class="lbtn p" id="lbPrev" aria-label="Previous photo">‹</button>
+  <button class="lbtn n" id="lbNext" aria-label="Next photo">›</button>
+  <button class="lbtn x" id="lbClose" aria-label="Close">✕</button>
+</dialog>
+
+<script>
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const frame = (f, alt) => `<div class="frame" data-name="${esc(f)}"><img src="assets/${esc(f)}" alt="${esc(alt)}" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('missing')"></div>`;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+document.title = SITE.title;
+$("#introTitle").textContent = SITE.title; $("#introDate").textContent = SITE.displayDate;
+$("#introMsg").textContent = SITE.introMessage; $("#openBtn").textContent = SITE.openButton;
+$("#heroLine").textContent = SITE.heroLine; $("#heroText").textContent = SITE.heroText;
+$("#footText").textContent = SITE.footerText; $("#fTitle").textContent = SITE.title;
+
+if (!reduce) $("#dust").innerHTML = Array.from({ length: 22 }, () =>
+  `<i style="left:${Math.random() * 100}%;animation-duration:${9 + Math.random() * 12}s;animation-delay:${-Math.random() * 15}s"></i>`).join("");
+
+$("#openBtn").addEventListener("click", () => {
+  $("#intro").classList.add("gone"); document.body.classList.remove("locked"); document.body.classList.add("open");
+  setTimeout(() => { $("#intro").remove(); $("#top").focus({ preventScroll: true }); }, reduce ? 50 : 1500);
+});
+$("#openBtn").focus();
+
+/* timeline: one section per year, photos with captions below */
+const ALL = [];
+$("#nav").innerHTML = YEARS.map((y, i) => `<a href="#year-${i}">${esc(y.label)}</a>`).join("");
+$("#timeline").innerHTML = YEARS.map((y, i) => {
+  const cards = y.photos.map((line) => {
+    const k = line.indexOf("|"), file = (k < 0 ? line : line.slice(0, k)).trim(), cap = k < 0 ? "" : line.slice(k + 1).trim();
+    ALL.push({ file, cap });
+    return `<button class="card" data-i="${ALL.length - 1}" aria-label="Enlarge photo: ${esc(cap || file)}">${frame(file, cap)}<span class="cap">${esc(cap)}</span></button>`;
+  }).join("");
+  return `<article class="year reveal" id="year-${i}"><h2>${esc(y.label)}</h2>${y.title ? `<h3>${esc(y.title)}</h3>` : ""}
+    ${y.text ? `<p class="text">${esc(y.text)}</p>` : ""}<div class="grid">${cards}</div>${y.note ? `<p class="note">${esc(y.note)}</p>` : ""}</article>`;
+}).join("");
+
+/* tap a photo to enlarge it */
+const lb = $("#lb"); let cur = 0, opener = null;
+function show(i) { cur = (i + ALL.length) % ALL.length; $("#lbFrame").innerHTML = frame(ALL[cur].file, ALL[cur].cap); $("#lbCap").textContent = ALL[cur].cap; }
+$("#timeline").addEventListener("click", (e) => { const b = e.target.closest(".card"); if (!b) return; opener = b; show(+b.dataset.i); lb.showModal(); });
+$("#lbPrev").onclick = () => show(cur - 1); $("#lbNext").onclick = () => show(cur + 1); $("#lbClose").onclick = () => lb.close();
+lb.addEventListener("click", (e) => { if (e.target === lb) lb.close(); });
+lb.addEventListener("close", () => opener && opener.focus());
+lb.addEventListener("keydown", (e) => { if (e.key === "ArrowLeft") show(cur - 1); if (e.key === "ArrowRight") show(cur + 1); });
+let sx = 0; lb.addEventListener("touchstart", (e) => { sx = e.touches[0].clientX; }, { passive: true });
+lb.addEventListener("touchend", (e) => { const d = e.changedTouches[0].clientX - sx; if (Math.abs(d) > 50) show(cur + (d < 0 ? 1 : -1)); });
+
+/* gentle reveal on scroll */
+const targets = document.querySelectorAll(".reveal");
+if ("IntersectionObserver" in window && !reduce) {
+  const io = new IntersectionObserver((en) => en.forEach((x) => { if (x.isIntersecting) { x.target.classList.add("in"); io.unobserve(x.target); } }), { threshold: .05 });
+  targets.forEach((t) => io.observe(t));
+} else targets.forEach((t) => t.classList.add("in"));
+</script>
+</body>
+</html>
